@@ -2,7 +2,22 @@
 
 const game = require("ticTacToe");
 
-describe("validateGameParameters() function", () => {
+describe("ticTacToe() main function", () => {
+    it("should stop execution when game parameters are invalid", () => {
+        expect(game.ticTacToe("sdfd")).toBe(false);
+    });
+
+    it("should return true when called with valid game parameters", () => {
+        const parameters = {
+            "fieldSize": 3
+        };
+
+        expect(game.ticTacToe(parameters)).toBe(true);
+    });
+});
+
+
+describe("areGameParametersValid() function", () => {
     it("should return true when called " +
         "with a parameters object" +
         "with a valid field size key", () => {
@@ -11,11 +26,11 @@ describe("validateGameParameters() function", () => {
             "fieldSize": 3
         };
 
-        expect(game.validateGameParameters(parameters)).toBe(true);
+        expect(game.areGameParametersValid(parameters)).toBe(true);
     });
 
     it("should return false when called without a parameters object", () => {
-        expect(game.validateGameParameters()).toBe(false);
+        expect(game.areGameParametersValid()).toBe(false);
     });
 
     it("should return false when called with a wrong field size in a parameters object (!= 3)", () => {
@@ -23,7 +38,7 @@ describe("validateGameParameters() function", () => {
             "fieldSize": 2
         };
 
-        expect(game.validateGameParameters(parameters)).toBe(false);
+        expect(game.areGameParametersValid(parameters)).toBe(false);
     });
 
 
@@ -32,7 +47,7 @@ describe("validateGameParameters() function", () => {
             "fieldSize": "3"
         };
 
-        expect(game.validateGameParameters(parameters)).toBe(false);
+        expect(game.areGameParametersValid(parameters)).toBe(false);
     });
 
 
@@ -41,7 +56,7 @@ describe("validateGameParameters() function", () => {
             "fieldSize": null
         };
 
-        expect(game.validateGameParameters(parameters)).toBe(false);
+        expect(game.areGameParametersValid(parameters)).toBe(false);
     });
 
 
@@ -50,7 +65,7 @@ describe("validateGameParameters() function", () => {
             "fieldSize": true
         };
 
-        expect(game.validateGameParameters(parameters)).toBe(false);
+        expect(game.areGameParametersValid(parameters)).toBe(false);
     });
 });
 
@@ -62,32 +77,52 @@ describe("createGameField() function", () => {
         };
 
         const expectedField = [
-                {"coordX":1,"coordY":1,"cellState":"."},
-                {"coordX":1,"coordY":2,"cellState":"."},
-                {"coordX":1,"coordY":3,"cellState":"."},
-                {"coordX":2,"coordY":1,"cellState":"."},
-                {"coordX":2,"coordY":2,"cellState":"."},
-                {"coordX":2,"coordY":3,"cellState":"."},
-                {"coordX":3,"coordY":1,"cellState":"."},
-                {"coordX":3,"coordY":2,"cellState":"."},
-                {"coordX":3,"coordY":3,"cellState":"."}
-            ];
+            {"coordX":1,"coordY":1,"cellState":"."},
+            {"coordX":1,"coordY":2,"cellState":"."},
+            {"coordX":1,"coordY":3,"cellState":"."},
+            {"coordX":2,"coordY":1,"cellState":"."},
+            {"coordX":2,"coordY":2,"cellState":"."},
+            {"coordX":2,"coordY":3,"cellState":"."},
+            {"coordX":3,"coordY":1,"cellState":"."},
+            {"coordX":3,"coordY":2,"cellState":"."},
+            {"coordX":3,"coordY":3,"cellState":"."}
+        ];
 
         expect(game.createGameField(parameters)).toEqual(expectedField);
     });
 });
 
 
-describe("ticTacToe() function", () => {
-    it("should stop execution when game parameters are invalid", () => {
-        expect(game.ticTacToe("sdfd")).toBe(false);
+describe("isThereAWinner() function", () => {
+    it("should return false", () => {
+
     });
+});
 
-    it("should return true when called with valid game parameters", () => {
-        const parameters = {
-            "fieldSize": 3
-        };
 
-        expect(game.ticTacToe(parameters)).toBe(true);
+describe("isTurnAvailable() function", () => {
+    it("should ...", () => {
+
+    });
+});
+
+
+describe("drawTheField() function", () => {
+    it("should ...", () => {
+
+    });
+});
+
+
+describe("makeNewTurn() function", () => {
+    it("should ...", () => {
+
+    });
+});
+
+
+describe("...() function", () => {
+    it("should ...", () => {
+
     });
 });

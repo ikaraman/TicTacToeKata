@@ -9,20 +9,20 @@ ticTacToe(parameters);
 
 
 function ticTacToe(parameters) {
-    if(!validateGameParameters(parameters)){
+    if(!areGameParametersValid(parameters)){
         return false;
     }
     const gameField = createGameField(parameters);
 
-    // while (!isGameFinished(gameField)){
-        //drawTheField(gameField)
-        //makeNewTurn(gameField)
-    // }
+    while (!isThereAWinner(gameField) && isTurnAvailable(gameField)){
+        drawTheField(gameField);
+        makeNewTurn(gameField);
+    }
 
     return true;
 }
 
-function validateGameParameters(parameters) {
+function areGameParametersValid(parameters) {
     if (parameters === undefined || parameters.fieldSize !== 3) {
         console.log("Game parameters are incorrect, exiting...");
         return false;
@@ -49,8 +49,37 @@ function createGameField(parameters) {
     return gameField;
 }
 
+function isThereAWinner(gameField) {
+    //to do:
+    //check horizontal lines
+    //check vertical lines
+    //check diagonals
+
+    //meanwhile just
+    return false;
+}
+
+function isTurnAvailable(gameField) {
+    gameField.forEach(el => {
+            if (el.cellState === ".") {
+                return true;
+            }
+        });
+
+    return false;
+}
+
+function drawTheField(gameField) {
+    //output to console
+}
+
+function makeNewTurn(gameField) {
+    //wait for input from a player
+    //drawTheField()
+}
+
 module.exports = {
     ticTacToe: ticTacToe,
-    validateGameParameters: validateGameParameters,
+    areGameParametersValid: areGameParametersValid,
     createGameField: createGameField
 };
