@@ -14,10 +14,10 @@ function ticTacToe(parameters) {
     }
     const gameField = createGameField(parameters);
 
-    while (!isThereAWinner(gameField) && isTurnAvailable(gameField)){
-        drawTheField(gameField);
-        makeNewTurn(gameField);
-    }
+    // while (!isThereAWinner(gameField) && isTurnAvailable(gameField)){
+    drawTheField(gameField, parameters);
+    //     makeNewTurn(gameField);
+    // }
 
     return true;
 }
@@ -60,17 +60,23 @@ function isThereAWinner(gameField) {
 }
 
 function isTurnAvailable(gameField) {
-    gameField.forEach(el => {
-            if (el.cellState === ".") {
-                return true;
-            }
-        });
+    for (let i = 0; i < gameField.length; i++) {
+        if (gameField[i].cellState === ".") {
+            return true
+        }
+    }
 
     return false;
 }
 
-function drawTheField(gameField) {
-    //output to console
+function drawTheField(gameField, parameters) {
+    //bad code, need to refactor
+    for( let i = 1; i <= parameters.fieldSize; i++ ){
+        for( let j = 1; j <= parameters.fieldSize; j++ ){
+            process.stdout.write(gameField[i*j - 1].cellState);
+        }
+        console.log("");
+    }
 }
 
 function makeNewTurn(gameField) {
@@ -81,5 +87,7 @@ function makeNewTurn(gameField) {
 module.exports = {
     ticTacToe: ticTacToe,
     areGameParametersValid: areGameParametersValid,
-    createGameField: createGameField
+    createGameField: createGameField,
+    isTurnAvailable: isTurnAvailable,
+    drawTheField: drawTheField
 };
