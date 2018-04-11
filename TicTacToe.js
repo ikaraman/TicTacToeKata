@@ -1,11 +1,33 @@
 "use strict";
 
-///////////////////////////
+const commandLineArgs = require("command-line-args");
+
+const optionDefinitions = [
+    {
+        name: 'help',
+        alias: 'h',
+        type: Boolean,
+        description: 'Help'
+    },
+    {
+        name: 'fieldSize',
+        alias: 's',
+        type: Number,
+        description: 'Game field size',
+    }
+];
+
+const options = commandLineArgs(optionDefinitions);
 const parameters = {
-    "fieldSize": 3
+    "fieldSize": undefined
 };
-ticTacToe(parameters);
-///////////////////////////
+
+if (options.fieldSize === undefined || options.fieldSize % 1 !== 0) {
+    console.log("To start a game, you need to specify a field size. Sample usage: \n'npm install' \n'node TitTacToe.js -s 3'");
+} else {
+    parameters.fieldSize = options.fieldSize;
+    ticTacToe(parameters);
+}
 
 
 function ticTacToe(parameters) {
