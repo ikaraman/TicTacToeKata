@@ -2,6 +2,27 @@
 
 const game = require("ticTacToe");
 
+describe("getStartOptions() function", () => {
+    it("should return array with help & fieldSize objects", () => {
+        const expectedOption = [
+            {
+                name: 'help',
+                alias: 'h',
+                type: Boolean,
+                description: 'Help'
+            },
+            {
+                name: 'fieldSize',
+                alias: 's',
+                type: Number,
+                description: 'Game field size',
+            }
+        ];
+
+        expect(game.getStartOptions()).toEqual(expectedOption)
+    });
+});
+
 describe("ticTacToe() main function", () => {
     it("should stop execution when game parameters are invalid", () => {
         expect(game.ticTacToe("sdfd")).toBe(false);
@@ -202,6 +223,16 @@ describe("drawTheField() function should output the field by stdouting each cell
 
 
 describe("makeNewTurn() function", () => {
+    it("should ...", () => {
+
+    });
+});
+
+
+
+
+
+describe("...() function", () => {
     it("should ...", () => {
 
     });
