@@ -5,12 +5,8 @@ const options = commandLineArgs(getStartOptions());
 const parameters = {
     "fieldSize": undefined
 };
+checkStartOptions(options);
 
-if (options.fieldSize === undefined || options.fieldSize % 1 !== 0) {
-    console.log("To start a game, you need to specify a field size. Sample usage: \n'npm install' \n'node TitTacToe.js -s 3'");
-} else {
-    parameters.fieldSize = options.fieldSize;
-    ticTacToe(parameters);
 function getStartOptions() {
     return [
         {
@@ -28,9 +24,17 @@ function getStartOptions() {
     ];
 }
 
+function checkStartOptions(options) {
+    if (options.fieldSize === undefined || !(Number.isInteger(options.fieldSize)) ) {
+        console.log("To start a game, you need to specify a field size. Sample usage: \n'npm install' \n'node TitTacToe.js -s 3'");
+    } else {
+        parameters.fieldSize = options.fieldSize;
+        ticTacToe(parameters);
+    }
+}
 
 function ticTacToe(parameters) {
-    if(!areGameParametersValid(parameters)){
+    if( !areGameParametersValid(parameters) ){
         return false;
     }
     const gameField = createGameField(parameters);
@@ -102,6 +106,8 @@ function makeNewTurn(gameField) {
 }
 
 module.exports = {
+    getStartOptions: getStartOptions,
+    checkStartOptions: checkStartOptions,
     ticTacToe: ticTacToe,
     areGameParametersValid: areGameParametersValid,
     createGameField: createGameField,
