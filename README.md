@@ -1,10 +1,12 @@
 # Readme
 ## How to start a game
 To start a game, you need to specify a field size. Sample usage:
-~~~
+Starting a game:
 'npm install'
-'node TitTacToe.js -s 3'
-~~~
+'node index.js -s 3'
+
+Exploring CLI options:
+'node index.js -h'
 
 ------------------------------------------------------------------------------------------------------------
 ## Tic Tac Toe Kata Description
