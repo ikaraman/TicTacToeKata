@@ -90,14 +90,13 @@ function isTurnAvailable(gameField) {
     return false;
 }
 
-function drawTheField(gameField, parameters) {
-    //bad code, need to refactor
-    for( let i = 1; i <= parameters.fieldSize; i++ ){
-        for( let j = 1; j <= parameters.fieldSize; j++ ){
-            process.stdout.write(gameField[i*j - 1].cellState);
+function drawTheField(gameField) {
+    for( const row of gameField ){
+        for( const cell of row ){
+            process.stdout.write(cell);
         }
-        console.log("");
-    }
+        process.stdout.write("\n");
+    };
 }
 
 function makeNewTurn(gameField) {
