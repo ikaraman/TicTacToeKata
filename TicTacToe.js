@@ -1,23 +1,7 @@
 "use strict";
 
 const commandLineArgs = require("command-line-args");
-
-const optionDefinitions = [
-    {
-        name: 'help',
-        alias: 'h',
-        type: Boolean,
-        description: 'Help'
-    },
-    {
-        name: 'fieldSize',
-        alias: 's',
-        type: Number,
-        description: 'Game field size',
-    }
-];
-
-const options = commandLineArgs(optionDefinitions);
+const options = commandLineArgs(getStartOptions());
 const parameters = {
     "fieldSize": undefined
 };
@@ -27,6 +11,21 @@ if (options.fieldSize === undefined || options.fieldSize % 1 !== 0) {
 } else {
     parameters.fieldSize = options.fieldSize;
     ticTacToe(parameters);
+function getStartOptions() {
+    return [
+        {
+            name: 'help',
+            alias: 'h',
+            type: Boolean,
+            description: 'Help'
+        },
+        {
+            name: 'fieldSize',
+            alias: 's',
+            type: Number,
+            description: 'Game field size',
+        }
+    ];
 }
 
 
