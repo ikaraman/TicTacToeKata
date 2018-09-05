@@ -57,14 +57,10 @@ function areGameParametersValid(parameters) {
 function createGameField(parameters) {
     const gameField = [];
 
-    for (let x = 1; x <= parameters.fieldSize; x++){
-        for (let y = 1; y <= parameters.fieldSize; y++){
-            gameField.push(
-                {
-                    "coordX": x,
-                    "coordY": y,
-                    "cellState": "."
-                });
+    for (let row = 0; row < parameters.fieldSize; row++){
+        gameField.push([]);
+        for (let column = 0; column < parameters.fieldSize; column++){
+            gameField[row].push(".")
         }
     }
 
