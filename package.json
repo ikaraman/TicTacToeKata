@@ -12,7 +12,8 @@
     ],
     "modulePaths": [
       "<rootDir>"
-    ]
+    ],
+    "testEnvironment": "node"
   },
   "author": "Ivan Karaman.",
   "description": "",
