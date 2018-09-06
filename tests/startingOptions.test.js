@@ -1,6 +1,6 @@
 "use strict";
 
-const startingOptions = require("../startingOptions");
+const startingOptions = require("../src/startingOptions");
 
 describe("getStartingOptions() function", () => {
     it("should return array with help & fieldSize objects", () => {

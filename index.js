@@ -1,7 +1,7 @@
 "use strict";
 
 const commandLineArgs = require("command-line-args"),
-    startingOptions = require("./startingOptions");
+    startingOptions = require("./src/startingOptions");
 
 try {
     const options = commandLineArgs(startingOptions.getStartingOptions());

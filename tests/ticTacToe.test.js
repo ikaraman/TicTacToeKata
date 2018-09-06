@@ -1,6 +1,6 @@
 "use strict";
 
-const game = require("../ticTacToe");
+const game = require("../src/ticTacToe");
 
 console.log = jest.fn(function() {
 });

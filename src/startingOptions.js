@@ -3,17 +3,21 @@
 const game = require("./ticTacToe"),
     gameParameters = { "fieldSize": undefined };
 
-exports.startGameIfCommandLineOptionsAreValid = function(options) {
+function startGameIfCommandLineOptionsAreValid(options) {
     if (options.fieldSize === undefined || !(Number.isInteger(options.fieldSize)) ) {
         console.log("To start a game, you need to specify a field size. Sample usage: \n'npm install' \n'node index.js -s 3'");
     } else {
-        gameParameters.fieldSize = options.fieldSize;
-        game.ticTacToe(gameParameters);
+        if (options.fieldSize === 3) {
+            gameParameters.fieldSize = options.fieldSize;
+            console.log("Game parameters are correct, let the game begin!");
+            game.ticTacToe(gameParameters);
+        } else {
+            console.log("Game parameters are incorrect, exiting...");
+        }
     }
-};
+}
 
-
-exports.getStartingOptions = function() {
+function getStartingOptions() {
     return [
         {
             name: 'help',
@@ -28,4 +32,9 @@ exports.getStartingOptions = function() {
             description: 'Game field size',
         }
     ];
+}
+
+module.exports = {
+    getStartingOptions: getStartingOptions,
+    startGameIfCommandLineOptionsAreValid: startGameIfCommandLineOptionsAreValid
 };
